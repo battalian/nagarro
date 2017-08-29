@@ -20,6 +20,44 @@ app.get('/todos', function (req, res, next) {
     res.json( data.todos);
 });
 
+app.get('/todos/active', function (req, res) {
+    var active_todos={};
+    for(key in data.todos )
+    {
+        if( data.todos[key].status == data.statusENUMS.ACTIVE){
+            active_todos[key] = data.todos[key];
+        }
+    }
+    res.json(active_todos);
+});
+
+
+app.get('/todos/complete', function (req, res) {
+    var completed_todos={};
+    for(key in data.todos )
+    {
+        if( data.todos[key].status == data.statusENUMS.COMPLETE){
+            completed_todos[key] = data.todos[key];
+        }
+    }
+    res.json(completed_todos);
+});
+
+
+app.get('/todos/deleted', function (req, res) {
+    var deleted_todos={};
+    for(key in data.todos )
+    {
+        if( data.todos[key].status == data.statusENUMS.DELETED){
+            deleted_todos[key] = data.todos[key];
+        }
+    }
+    res.json(deleted_todos);
+});
+
+
+
+
 app.delete('/todos/:id', function (req, res, next) {
      var idToBeDelete = req.params.id;
      var todo = data.todos[idToBeDelete];
@@ -48,7 +86,7 @@ app.post('/addNewTodo', function (req, res) {
         data.todos[data.nextId] = newtodo;
         data.nextId++;
     }
-    res.json(data.todos);
+     res.json(data.todos);
 });
 
 app.put('/modifyTodo/:id', function (req, res) {
@@ -76,6 +114,36 @@ app.put('/modifyTodo/:id', function (req, res) {
 
     }
     res.json( data.todos);
+});
+
+// PUT /api/todos/complete/:id
+
+app.put('/todos/complete/:id', function (req, res) {
+    var idToBeCompleted = req.params.id;
+    var todo = data.todos[idToBeCompleted];
+    if(!todo){
+        res.status(400).json( {err: "todo doesn't exist"} );
+    }
+    else
+    {
+        todo.status = data.statusENUMS.COMPLETE;
+        res.json(data.todos);
+    }
+
+});
+
+app.put('/todos/active/:id', function (req, res) {
+    var idToBeActive = req.params.id;
+    var todo = data.todos[idToBeActive];
+    if(!todo){
+        res.status(400).json( {err: "todo doesn't exist"} );
+    }
+    else
+    {
+        todo.status = data.statusENUMS.ACTIVE;
+        res.json(data.todos);
+    }
+
 });
 
 
