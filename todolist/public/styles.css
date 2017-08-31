@@ -1,0 +1,86 @@
+/*yuiloikl*/
+
+div.todoStatusACTIVE{
+    color: black;
+}
+
+div.todoStatusDELETED{
+    color: red;
+    text-decoration: line-through;
+}
+
+div.todoStatusCOMPLETE{
+    color:green;
+    text-decoration: line-through;
+}
+div.headerClass{
+    background-color: #ead00b;
+    height: 40px;
+    line-height: 40px;
+}
+
+
+div#activeTodosId{
+    padding-top: 5%;
+    padding-left: 5%;
+}
+
+div#checkBoxDivActive{
+    padding-left: 3%;
+}
+
+div#completeTodosId{
+    padding-top: 1%;
+    padding-left: 5%;
+}
+
+div#checkBoxDivComplete{
+    padding-left: 3%;
+}
+
+
+div#deletedTodosId{
+    padding-top: 1%;
+    padding-left: 5%;
+}
+
+div#checkBoxDivDelete{
+    padding-left: 3%;
+}
+
+div#addButtonId{
+    padding-left: 5%;
+}
+
+text.deleteClass{
+    position: absolute;
+    color: red;
+    left: 300px;
+
+}
+/*input{
+    padding-left: 100px;
+}*/
+
+input[type="checkbox"]{
+    width: 15px; /*Desired width*/
+    height: 15px; /*Desired height*/
+}
+
+p.hideClass{
+    color: blue;
+    /*text-underline-mode: true;*/
+    text-decoration: underline;
+}
+
+text.textClass{
+    padding-left: 3%;
+}
+
+button#submitButtonId{
+    background-color: #87ceeb;
+
+
+}
+
+

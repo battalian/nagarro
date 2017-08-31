@@ -9,8 +9,8 @@ var statusENUMS={
 
 var todos={
     1:{title: "learn JS", status:statusENUMS.ACTIVE},
-    2:{title: "reading  books", status:statusENUMS.ACTIVE},
-    3:{title: "playing cricket", status:statusENUMS.ACTIVE},
+    2:{title: "reading  books", status:statusENUMS.DELETED},
+    3:{title: "playing cricket", status:statusENUMS.COMPLETE},
 };
 var nextId = 4;
 

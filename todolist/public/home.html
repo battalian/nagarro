@@ -4,25 +4,65 @@
     <script type="text/javascript" src="/script.js" > </script>
     <meta charset="UTF-8">
     <title>Todos</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
+    <div id="headerId" class="headerClass">
     <h3 align="center"> Todo List</h3>
-    <button onclick="getTodosAJAX()"> Get Todos</button>
+    </div>
+
+    <!--<button onclick="getTodosAJAX()"> Refresh Todos</button>-->
+    <div id="activeTodosId" >
+        <b> Active Todos</b>
+        <br>
+        <div id="checkBoxDivActive">
+            <!--<input type="checkbox" name="vehicle" value="Bike"> I have a bike<br>-->
+            <!--<input type="checkbox" name="vehicle" value="Car" > I have a car<br>-->
+        </div>
+
+    </div>
+    <br>
+    <hr>
+
+    <div id="addButtonId">
+        <b> Add Todo </b>
+        <br>
+        <input type="text" id="newTodoId" placeholder="Todo Title Goes Here">
+        <button type="submit" onclick="addTodosAJAX()" value="Add New" id="submitButtonId"> ADD </button>
+    </div>
+    <br>
+    <hr>
+
+    <p class='hideClass' onclick="toggleDiv('completeTodosId', 'hideId1')" id="hideId1" align="center"> Hide Completed </p>
+    <div id="completeTodosId" >
+        <b> Completed Todos</b>
+        <br>
+        <div id="checkBoxDivComplete">
+            <input type="checkbox" name="vehicle" value="Bike"> <br>
+            <!--<input type="checkbox" name="vehicle" value="Car" > I have a car<br>-->
+        </div>
+
+    </div>
+    <br>
+    <hr>
+
+    <p class='hideClass'onclick="toggleDiv('deletedTodosId', 'hideId2')" id="hideId2" align="center"> Hide Deleted </p>
+
+    <div id="deletedTodosId" >
+        <b> Deleted Todos</b>
+
+        <br>
+        <div id="checkBoxDivDelete">
+        </div>
+
+    </div>
+    <br>
+    <hr>
+
     <div id="todos_div">
 
     </div>
 
-
-    <form  >
-        <input type="text" name="todoTitle">
-        <button type="submit" onclick="PostTodosAJAX()"> Add New</button>
-    </form>
-
-<!--<script>-->
-     <!--function getTodosAJAX() {-->
-        <!--console.log('AJAX called');-->
-    <!--}-->
-<!--</script>-->
+    <br>
 </body>
 </html>
