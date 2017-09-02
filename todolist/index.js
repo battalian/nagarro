@@ -16,11 +16,11 @@ app.use('/', express.static(__dirname + '/public') );
 
 app.use("/", bodyParser.urlencoded( {extended:false} ) );
 
-app.get('/todos', function (req, res, next) {
+app.get('/api/todos', function (req, res, next) {
     res.json( data.todos);
 });
 
-app.get('/todos/active', function (req, res) {
+app.get('/api/todos/active', function (req, res) {
     var active_todos={};
     for(key in data.todos )
     {
@@ -32,7 +32,7 @@ app.get('/todos/active', function (req, res) {
 });
 
 
-app.get('/todos/complete', function (req, res) {
+app.get('/api/todos/complete', function (req, res) {
     var completed_todos={};
     for(key in data.todos )
     {
@@ -44,7 +44,7 @@ app.get('/todos/complete', function (req, res) {
 });
 
 
-app.get('/todos/deleted', function (req, res) {
+app.get('/api/todos/deleted', function (req, res) {
     var deleted_todos={};
     for(key in data.todos )
     {
@@ -58,7 +58,7 @@ app.get('/todos/deleted', function (req, res) {
 
 
 
-app.delete('/todos/:id', function (req, res, next) {
+app.delete('/api/todos/:id', function (req, res, next) {
      var idToBeDelete = req.params.id;
      var todo = data.todos[idToBeDelete];
       // console.log( );
@@ -72,7 +72,7 @@ app.delete('/todos/:id', function (req, res, next) {
      }
 });
 
-app.post('/addNewTodo', function (req, res) {
+app.post('/api/addNewTodo', function (req, res) {
     var titleData = req.body.todoTitle;
     console.log(req.body);
     console.log(titleData);
@@ -89,7 +89,7 @@ app.post('/addNewTodo', function (req, res) {
      res.json(data.todos);
 });
 
-app.put('/modifyTodo/:id', function (req, res) {
+app.put('/api/modifyTodo/:id', function (req, res) {
     var todoId = req.params.id;
     var todo = data.todos[todoId];
     if(!todo)
@@ -118,7 +118,7 @@ app.put('/modifyTodo/:id', function (req, res) {
 
 // PUT /api/todos/complete/:id
 
-app.put('/todos/complete/:id', function (req, res) {
+app.put('/api/todos/complete/:id', function (req, res) {
     var idToBeCompleted = req.params.id;
     var todo = data.todos[idToBeCompleted];
     if(!todo){
@@ -132,7 +132,7 @@ app.put('/todos/complete/:id', function (req, res) {
 
 });
 
-app.put('/todos/active/:id', function (req, res) {
+app.put('/api/todos/active/:id', function (req, res) {
     var idToBeActive = req.params.id;
     var todo = data.todos[idToBeActive];
     if(!todo){

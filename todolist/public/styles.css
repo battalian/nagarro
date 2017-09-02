@@ -1,5 +1,11 @@
 /*yuiloikl*/
-
+div.headerClass{
+    padding-top: 4%;
+    background-color: #ead00b;
+    height: 35px;
+    line-height: 40px;
+    text-align: center;
+}
 div.todoStatusACTIVE{
     color: black;
 }
@@ -13,11 +19,7 @@ div.todoStatusCOMPLETE{
     color:green;
     text-decoration: line-through;
 }
-div.headerClass{
-    background-color: #ead00b;
-    height: 40px;
-    line-height: 40px;
-}
+
 
 
 div#activeTodosId{
@@ -52,12 +54,14 @@ div#addButtonId{
     padding-left: 5%;
 }
 
-text.deleteClass{
+a.deleteClass{
     position: absolute;
     color: red;
     left: 300px;
 
 }
+
+/*a.de*/
 /*input{
     padding-left: 100px;
 }*/
@@ -77,10 +81,18 @@ text.textClass{
     padding-left: 3%;
 }
 
-button#submitButtonId{
-    background-color: #87ceeb;
-
-
+.btn-default {
+    color: #007aff;
+    background-color: #fff;
+    border-color: #007aff;
 }
 
-
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:active,
+.btn-default.active,
+.open > .btn-default.dropdown-toggle {
+    color: #fff;
+    background-color: #007aff;
+    border-color: #007aff;
+}

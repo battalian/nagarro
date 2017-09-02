@@ -1,10 +1,6 @@
 /**
  * Created by chavaharish on 28-08-2017.
  */
-// console.log('loaded succesfully');
-
-//var db = require(__dirname + '../data.js');
-
 const ID = 'todos_div';
 var data;
 const RESPONSE_DONE = 4;
@@ -19,11 +15,11 @@ function addTodosAJAX() {
 
     var title = document.getElementById(newTodoId).value;
     document.getElementById(newTodoId).value = '';
-    // var bodyData =
+
 
     console.log('AJAX called');
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/addNewTodo', true);
+    xhr.open('POST', '/api/addNewTodo', true);
 
     xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
     var data = 'todoTitle=' + encodeURI(title);
@@ -46,7 +42,7 @@ function changeStatusToComplete(key) {
     console.log('AJAX called'+ key);
     var xhr = new XMLHttpRequest();
     // app.put('/todos/complete/:id'
-    xhr.open('PUT', '/todos/complete/'+key, true);
+    xhr.open('PUT', '/api/todos/complete/'+key, true);
     xhr.onreadystatechange = function () {
         if(xhr.readyState == RESPONSE_DONE ){
             if(xhr.status == STATUS_OK){
@@ -66,7 +62,7 @@ function changeStatusToActive(key) {
     var xhr = new XMLHttpRequest();
     // app.put('/todos/complete/:id'
     // '/todos/complete/:id
-    xhr.open('PUT', '/todos/active/'+key, true);
+    xhr.open('PUT', '/api/todos/active/'+key, true);
     xhr.onreadystatechange = function () {
         if(xhr.readyState == RESPONSE_DONE ){
             if(xhr.status == STATUS_OK){
@@ -84,7 +80,7 @@ function changeStatusToDelete(key) {
     console.log('AJAX called'+ key);
     var xhr = new XMLHttpRequest();
     // app.put('/todos/complete/:id'
-    xhr.open('DELETE', '/todos/'+key, true);
+    xhr.open('DELETE', '/api/todos/'+key, true);
     xhr.onreadystatechange = function () {
         if(xhr.readyState == RESPONSE_DONE ){
             if(xhr.status == STATUS_OK){
@@ -118,25 +114,22 @@ function createTodoElement(id, todo_object) {
         titlePara.setAttribute('class', 'textClass');
 
 
-        var deleteElement = document.createElement('text');
-        deleteElement.innerText = 'x';
+        // var deleteElement = document.createElement('text');
+        // deleteElement.innerText = 'x';
+        // deleteElement.setAttribute("href","#");
+        // deleteElement.setAttribute("onclick", 'changeStatusToDelete('+id+')' );
+        // deleteElement.setAttribute("class", "deleteClass");
+
+
+        var deleteElement = document.createElement('a');
+        deleteElement.setAttribute("href", '#');
         deleteElement.setAttribute("onclick", 'changeStatusToDelete('+id+')' );
+        deleteElement.innerHTML = '<span class="glyphicon glyphicon-remove"></span>';
         deleteElement.setAttribute("class", "deleteClass");
 
         todo_element.appendChild(checkBox);
         todo_element.appendChild(titlePara);
         todo_element.appendChild(deleteElement);
-        // var complete_button = document.createElement("button");
-        // complete_button.innerText = 'Mark as complete';
-        // complete_button.setAttribute('onclick', 'changeStatusToComplete('+id+')');
-        //
-        // var delete_button = document.createElement("button");
-        // delete_button.innerText = 'Delete';
-        // delete_button.setAttribute('onclick', 'changeStatusToDelete('+id+')');
-
-
-        // todo_element.appendChild(complete_button);
-        // todo_element.appendChild(delete_button);
     }
 
     else if(todo_object.status == 'COMPLETE')
@@ -153,25 +146,27 @@ function createTodoElement(id, todo_object) {
         titlePara.innerText = todo_object.title;
         titlePara.setAttribute('class', 'textClass');
 
-        var deleteElement = document.createElement('text');
-        deleteElement.innerText = 'x';
+
+    // <a href="#" onclick="myFunction()">
+    //     <span class="glyphicon glyphicon-remove"></span>
+    //     </a>
+
+        // var deleteElement = document.createElement('text');
+        // deleteElement.innerText = 'x';
+        // deleteElement.setAttribute("href","#");
+        // deleteElement.setAttribute("onclick", 'changeStatusToDelete('+id+')' );
+        // deleteElement.setAttribute("class", "deleteClass");
+
+        var deleteElement = document.createElement('a');
+        deleteElement.setAttribute("href", '#');
         deleteElement.setAttribute("onclick", 'changeStatusToDelete('+id+')' );
+        deleteElement.innerHTML = '<span class="glyphicon glyphicon-remove"></span>';
         deleteElement.setAttribute("class", "deleteClass");
+
 
         todo_element.appendChild(checkBox);
         todo_element.appendChild(titlePara);
         todo_element.appendChild(deleteElement);
-        //
-        //
-        //
-        //
-        // todo_element.innerText = todo_object.title;
-        //
-        // var delete_button = document.createElement("button");
-        // delete_button.innerText = 'Delete';
-        // delete_button.setAttribute('onclick', 'changeStatusToDelete('+id+')');
-        //
-        // todo_element.appendChild(delete_button);
     }
 
 
@@ -227,7 +222,7 @@ function add_todo_element(id, todos__data__json) {
  function getTodosAJAX()  {
     console.log('AJAX called');
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/todos', true);
+    xhr.open('GET', '/api/todos', true);
     xhr.onreadystatechange = function () {
         if(xhr.readyState == RESPONSE_DONE ){
             if(xhr.status == STATUS_OK){
@@ -239,22 +234,7 @@ function add_todo_element(id, todos__data__json) {
      xhr.send(data==null);
 }
 
-// PostTodosAJAX()
 
-function PostTodosAJAX()  {
-    console.log('AJAX called');
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/addNewTodo', true);
-    xhr.onreadystatechange = function () {
-        if(xhr.readyState == RESPONSE_DONE ){
-            if(xhr.status == STATUS_OK){
-                console.log(xhr.responseText);
-                add_todo_element(ID, xhr.responseText);
-            }
-        }
-    }
-    xhr.send(data==null);
-}
 
 // toggleDiv
 function toggleDiv(divId, hideId) {
