@@ -58,13 +58,8 @@ a.deleteClass{
     position: absolute;
     color: red;
     left: 300px;
-
 }
 
-/*a.de*/
-/*input{
-    padding-left: 100px;
-}*/
 
 input[type="checkbox"]{
     width: 15px; /*Desired width*/

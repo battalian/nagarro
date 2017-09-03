@@ -114,13 +114,6 @@ function createTodoElement(id, todo_object) {
         titlePara.setAttribute('class', 'textClass');
 
 
-        // var deleteElement = document.createElement('text');
-        // deleteElement.innerText = 'x';
-        // deleteElement.setAttribute("href","#");
-        // deleteElement.setAttribute("onclick", 'changeStatusToDelete('+id+')' );
-        // deleteElement.setAttribute("class", "deleteClass");
-
-
         var deleteElement = document.createElement('a');
         deleteElement.setAttribute("href", '#');
         deleteElement.setAttribute("onclick", 'changeStatusToDelete('+id+')' );
@@ -146,16 +139,6 @@ function createTodoElement(id, todo_object) {
         titlePara.innerText = todo_object.title;
         titlePara.setAttribute('class', 'textClass');
 
-
-    // <a href="#" onclick="myFunction()">
-    //     <span class="glyphicon glyphicon-remove"></span>
-    //     </a>
-
-        // var deleteElement = document.createElement('text');
-        // deleteElement.innerText = 'x';
-        // deleteElement.setAttribute("href","#");
-        // deleteElement.setAttribute("onclick", 'changeStatusToDelete('+id+')' );
-        // deleteElement.setAttribute("class", "deleteClass");
 
         var deleteElement = document.createElement('a');
         deleteElement.setAttribute("href", '#');
